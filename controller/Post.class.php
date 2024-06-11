@@ -107,34 +107,7 @@ class Post extends Controller
         ]);
     }
 
-    // mvc 2
-    public function donasi_process()
-    {
-        $postModel = $this->loadModel('PostModel');
-        $nama_donasi = addslashes($_POST['nama_donasi']);
-        $metode_pembayaran = addslashes($_POST['metode_pembayaran']);
-        $jumlah_nominal = addslashes($_POST['jumlah_nominal']);
-        $pesan = addslashes($_POST['pesan']);
 
-        $postModel->insertDonasi($nama_donasi, $metode_pembayaran, $jumlah_nominal, $pesan);
-
-        $this->redirect("?c=Post&m=donasi_success&nama_donasi=$nama_donasi&metode_pembayaran=$metode_pembayaran&jumlah_nominal=$jumlah_nominal&pesan=$pesan");
-    }
-
-    public function donasi_success()
-    {
-        $nama_donasi = $_GET['nama_donasi'] ?? '';
-        $metode_pembayaran = $_GET['metode_pembayaran'] ?? '';
-        $jumlah_nominal = $_GET['jumlah_nominal'] ?? '';
-        $pesan = $_GET['pesan'] ?? '';
-
-        $this->loadView('fhasil_post', [
-            'nama_donasi' => $nama_donasi,
-            'metode_pembayaran' => $metode_pembayaran,
-            'jumlah_nominal' => $jumlah_nominal,
-            'pesan' => $pesan
-        ]);
-    }
 
     // mvc 4
     public function informasi_process()
